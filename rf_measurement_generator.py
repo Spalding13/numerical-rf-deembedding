@@ -162,7 +162,7 @@ if __name__ == "__main__":
     )
     
     generator.generate_measurement(
-        output_file="rf_measurements.csv",
+        output_file="./measurement_data/rf_measurements.csv",
         dut_r=1.0,        # 1 Ohm
         dut_l=1e-9,       # 1 nH
         dut_c=1e-12,      # 1 pF
@@ -171,4 +171,4 @@ if __name__ == "__main__":
         noise_level=0.01  # 1% noise
     )
     
-    print("RF measurements saved to rf_measurements.csv")
+    print("RF measurements saved to ./measurement_data/rf_measurements.csv")
