@@ -3,3 +3,25 @@
 Концептуално ниво:
 Системата генерира данни със шум, една част от които се използват за валидация -- тази част от системата наричаме forward model или оператор 
 След синтезиране на данни, предстои да имплементираме inverse (защо не backward) model или оператор, който ще валидираме чрез golden-daтата
+
+S11 (Return Loss) - Blue Plot
+Range: -4 to -1.5 dB across 0-10 GHz
+Behavior: Worst matching at low frequencies (-4 dB at DC), improves gradually to peak around 4-5 GHz (-1.5 dB), then degrades again
+Interpretation: Port 1 has moderate impedance mismatch throughout. Values below -10 dB would be ideal; device reflects more signal back than desired, especially at lower frequencies
+S21 (Forward Transmission) - Green Plot
+Range: -60 to -15 dB across 0-10 GHz
+Behavior: Very high insertion loss at low frequencies (-60 dB), improves rapidly, peaks around 5-6 GHz (-15 dB), then increases again
+Interpretation: Significant attenuation across the band. A passive device with -15 dB insertion loss means ~97% of input power is lost. This suggests:
+Either a high-loss component (filter, attenuator, lossy cable)
+Severe impedance mismatches causing reflections
+S12 (Reverse Transmission) - Orange Plot
+Range: -60 to -15 dB (nearly identical to S21)
+Behavior: Mirrors S21 almost perfectly
+Interpretation: Reciprocal network confirmed - your DUT behaves the same in both directions (expected for passive devices)
+S22 (Return Loss at Port 2) - Purple Plot
+Range: -7 to -3 dB across 0-10 GHz
+Behavior: Worst at low frequencies (-7 dB), improves around 4-5 GHz (-3 dB)
+Interpretation: Port 2 matching is slightly worse than Port 1, indicating asymmetric port characteristics
+
+Typical behavior of RF filters or attenuators with insertion loss > 15 dB.
+

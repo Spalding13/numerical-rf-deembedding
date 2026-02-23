@@ -24,7 +24,7 @@ class RFMeasurementGenerator:
     @staticmethod
     def _abcd_series_rlc_vec(omega: np.ndarray, r: float, l: float, c: float) -> np.ndarray:
         """Vectorized ABCD for series RLC: returns array (N,2,2)."""
-        z = r + 1j * omega * l + 1 / (1j * omega * c)
+        z = r + 1j * omega * l + 1 / (1j * omega * c) 
         N = omega.size
         abcd = np.zeros((N, 2, 2), dtype=complex)
         abcd[:, 0, 0] = 1
