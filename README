@@ -25,3 +25,7 @@ Interpretation: Port 2 matching is slightly worse than Port 1, indicating asymme
 
 Typical behavior of RF filters or attenuators with insertion loss > 15 dB.
 
+## References
+
+- Keysight Technologies, *Signal Integrity Analysis Part 3: De-Embedding (Application Note 5989-5765EN)*.
+  https://www.keysight.com/us/en/assets/7018-08491/application-notes/5989-5765.pdf
