@@ -1,4 +1,3 @@
-```markdown
 # Numerical RF De-embedding
 
 ## 1. Project Overview
@@ -26,6 +25,7 @@ This script acts as our "Virtual VNA". It mathematically synthesizes realistic S
 The generator can model two main topologies. Here is the visual breakdown of what is being simulated (distinguishing the DUT from the parasitic structures):
 
 **A) Shunt Topology (Notch Filter) - *Primary Focus of the Project***
+
 ```text
        [ Fixture A ]       [ Intrinsic DUT ]       [ Fixture B ]
 Port 1 ----+-----------------------+-----------------------+---- Port 2
@@ -117,5 +117,3 @@ The mathematical models and physics concepts used in this project are based on i
 **Further Academic & Industry Reading (Added for Context):**
 3. **"Microwave Engineering" by David M. Pozar** - The absolute gold standard textbook for understanding RF network analysis, S-parameters, and ABCD matrix cascading.
 4. **Keysight Technologies Application Note: "De-embedding and Embedding S-Parameter Networks"** - An industry guide explaining the exact mathematical limits and real-world applications of subtracting fixture influences in VNA measurements.
-
-```
