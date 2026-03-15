@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+import skrf as rf
 
 def s_to_abcd(s_params, z0=50):
     """
@@ -86,3 +87,26 @@ def deembed_dut(fixture_csv, total_csv, z0=50):
     abcd_intrinsic = abcd_fix_inv @ abcd_tot @ abcd_fix_inv
     
     return abcd_intrinsic
+
+def load_csv_to_rf_network(csv_file_path, network_name):
+    """
+    Reads our generated CSV files and constructs a complex S-parameter matrix.
+    We need this because the Smith Chart requires both Real and Imaginary parts.
+    """
+    df = pd.read_csv(csv_file_path)
+    freqs = df['frequency_Hz'].values
+    
+    # Create an empty container for the complex S-parameters (N_points, 2 ports, 2 ports)
+    s_matrix = np.zeros((len(freqs), 2, 2), dtype=complex)
+    
+    # Combine Real and Imaginary parts into complex numbers (Re + j*Im)
+    s_matrix[:, 0, 0] = df['S11_real'] + 1j * df['S11_imag']
+    s_matrix[:, 0, 1] = df['S12_real'] + 1j * df['S12_imag']
+    s_matrix[:, 1, 0] = df['S21_real'] + 1j * df['S21_imag']
+    s_matrix[:, 1, 1] = df['S22_real'] + 1j * df['S22_imag']
+    
+    # Package it into a neat skrf Network object
+    net = rf.Network(f=freqs, s=s_matrix, z0=50, name=network_name)
+    net.frequency.unit = 'hz' 
+    
+    return net
