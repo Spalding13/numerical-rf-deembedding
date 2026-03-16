@@ -1,6 +1,5 @@
 # Other folders and files to ignore
 .vscode/
-measurement_data/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
